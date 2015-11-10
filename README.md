@@ -25,8 +25,6 @@ More information can be found on the [box page at Vagrant Cloud](https://atlas.h
 ```sh
 git clone https://github.com/fgrehm/vagrant-mssql-express.git
 cd vagrant-mssql-express
-# Download SQL Server with Tools installer
-wget http://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/ExpressAndTools%2064BIT/SQLEXPRWT_x64_ENU.exe
 vagrant up
 # Get a coffee as it will take a while for it to finish provisioning
 ```

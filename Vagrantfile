@@ -8,13 +8,28 @@ ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "opentable/win-2012r2-standard-amd64-nocm"
+  config.vm.guest = :windows
+  config.vm.communicator = "winrm"
+  config.vm.boot_timeout = 500
   config.vm.network "private_network", ip: "192.168.50.4"
-  config.vm.network :forwarded_port, guest: 3389, host: 3389
-
+  config.vm.network :forwarded_port, guest: 3389, host: 3389, id: "rdp", auto_correct: true
+  
+  config.winrm.username = "vagrant"
+  config.winrm.password = "vagrant"
+  
+  config.vm.provider "virtualbox" do |v|
+    v.customize ["modifyvm", :id, "--name", "win-2012-mssql-2014"]
+    v.customize ["modifyvm", :id, "--memory", "2048"]
+    v.customize ["modifyvm", :id, "--cpus", "2"]
+    v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+    v.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
+  end
+  
   config.vm.provision :shell, path: "scripts/install-dot-net.ps1"
   config.vm.provision :shell, path: "Scripts/download-sql-server.ps1"
   config.vm.provision :shell, path: "scripts/install-sql-server.ps1"
   config.vm.provision :shell, path: "scripts/configure-sql-port.ps1"
   config.vm.provision :shell, path: "Scripts/create-database.ps1"
   config.vm.provision :shell, path: "scripts/enable-rdp.ps1"
+
 end

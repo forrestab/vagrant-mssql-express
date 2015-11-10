@@ -4,8 +4,8 @@ A Windows Server 2012 R2 VM with SQL Server Express 2014 R2 SP2 powered by Vagra
 
 ## Requirements
 
-* Vagrant 1.6+ (tested on 1.6.3)
-* VirtualBox 4.3+ (tested on 4.3.16 on an Ubuntu host)
+* Vagrant 1.6+ (tested on 1.7.4)
+* VirtualBox 4.3+ (tested on 4.3.16 on an Ubuntu host and 5.0.4 on a Windows 10 host)
 * Around `12GB` of disk space (`3GB` for base box + `~9GB` for the VM)
 
 ## Base box information
@@ -23,8 +23,11 @@ More information can be found on the [box page at Vagrant Cloud](https://atlas.h
 ## Usage
 
 ```sh
-git clone https://github.com/fgrehm/vagrant-mssql-express.git
+git clone https://github.com/forrestab/vagrant-mssql-express.git
 cd vagrant-mssql-express
+# If you have any database and default values scripts you can either rename them to 
+#  database_creation.sql and default_values.sql or update the create-database.ps1 powershell
+#  script to use your files once the sql server has been installed.
 vagrant up
 # Get a coffee as it will take a while for it to finish provisioning
 ```

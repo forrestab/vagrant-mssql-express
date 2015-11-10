@@ -1,12 +1,14 @@
 # http://stackoverflow.com/a/9949105
-$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Stop";
 
-$SourceUrl = "http://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/ExpressAndTools%2064BIT/SQLEXPRWT_x64_ENU.exe"
-$OutputFile = "C:\SQLEXPRWT_x64_ENU.exe"
+$Source = "http://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/ExpressAndTools%2064BIT/SQLEXPRWT_x64_ENU.exe";
+$Destination = "C:\SQLEXPRWT_x64_ENU.exe";
 
-if (!(test-path $OutputFile)) {
-	echo "Downloading Sql Server 2014 Express R2"
-	(new-object System.Net.WebClient).DownloadFile($SourceUrl, $OutputFile)
+if (!(Test-Path $Destination)) {
+	Write-Output "Downloading Sql Server 2014 Express R2";
+	# https://blog.jourdant.me/3-ways-to-download-files-with-powershell/
+	# Wanted to use Start-BitsTransfer, but for some reason it needed special privileges
+	(New-Object System.Net.WebClient).DownloadFile($Source, $Destination);
 } else {
-	echo "Sql Server 2014 is already downloaded"
+	Write-Output "Sql Server is already downloaded";
 }

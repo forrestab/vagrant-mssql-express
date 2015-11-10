@@ -1,6 +1,6 @@
 # vagrant-mssql-express
 
-A Windows Server 2012 R2 VM with SQL Server Express 2008 R2 SP2 powered by Vagrant.
+A Windows Server 2012 R2 VM with SQL Server Express 2014 R2 SP2 powered by Vagrant.
 
 ## Requirements
 
@@ -26,7 +26,7 @@ More information can be found on the [box page at Vagrant Cloud](https://atlas.h
 git clone https://github.com/fgrehm/vagrant-mssql-express.git
 cd vagrant-mssql-express
 # Download SQL Server with Tools installer
-wget http://download.microsoft.com/download/0/4/B/04BE03CD-EAF3-4797-9D8D-2E08E316C998/SQLEXPRWT_x64_ENU.exe
+wget http://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/ExpressAndTools%2064BIT/SQLEXPRWT_x64_ENU.exe
 vagrant up
 # Get a coffee as it will take a while for it to finish provisioning
 ```

@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :shell, path: "scripts/install-dot-net.ps1"
   config.vm.provision :shell, path: "Scripts/download-sql-server.ps1"
-  config.vm.provision :shell, path: "scripts/install-sql-server.cmd"
+  config.vm.provision :shell, path: "scripts/install-sql-server.ps1"
   config.vm.provision :shell, path: "scripts/configure-sql-port.ps1"
   config.vm.provision :shell, path: "scripts/enable-rdp.ps1"
 end
